@@ -13,8 +13,7 @@
   align-items: center;
 }
 
-.input,
-.btn-secondary {
+.input,.btn-secondary{
   width: 100%;
   margin: 1.5rem 1.5rem 0.5rem 1.5rem;
 }
@@ -39,6 +38,6 @@
   font-size: 0.75rem;
 }
 
-.MuiFormHelperText-root {
+.MuiFormHelperText-root{
   color: red !important;
 }

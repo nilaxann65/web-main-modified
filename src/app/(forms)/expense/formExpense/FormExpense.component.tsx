@@ -1,7 +1,7 @@
 'use client'
 import { MenuItem, TextField } from '@mui/material'
 import React from 'react'
-import './FormIncome.component.css'
+import './FormExpense.component.css'
 
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -19,7 +19,7 @@ import SaveInvoice from '../../_services/SaveInvoice.service'
 import { InvoiceType } from '@/app/_common/enum/invoiceType'
 
 
-export default function FormIncome(): React.JSX.Element {
+export default function FormExpense(): React.JSX.Element {
   const router = useRouter()
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
@@ -37,8 +37,7 @@ export default function FormIncome(): React.JSX.Element {
       date: today
     }
   })
-  const [isOpen, setIsOpen] = React.useState(false)
-  const [eventType, setTypeEvent] = React.useState('')
+
 
   const toggleModal = (): void => {
     setOpen(state => !state)
@@ -51,7 +50,7 @@ export default function FormIncome(): React.JSX.Element {
 
   const onSubmit: SubmitHandler<Transaction> = data => {
     setLoading(true)
-    SaveInvoice(data, InvoiceType.Income).then(
+    SaveInvoice(data, InvoiceType.Expense).then(
       result => {
         toggleModal()
         setLoading(false)
@@ -59,19 +58,18 @@ export default function FormIncome(): React.JSX.Element {
       },
       error => {
         setLoading(false)
-        setTypeEvent('error')
+        //TODO: Implementar el provider de alertas
+        //setTypeEvent('error')
         console.log('Error=>', error)
-        setIsOpen(true)
+        //setIsOpen(true)
       }
     )
   }
-  const handleClose = (): void => {
-    setIsOpen(false)
-  }
+
 
   return (
     <div className="container">
-      <h1>Registro de ingreso</h1>
+      <h1>Registro de gasto</h1>
       <h4>Ingresa la información que desea registrar</h4>
       <form
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -79,7 +77,7 @@ export default function FormIncome(): React.JSX.Element {
         className="form-content"
       >
         <TextField
-          label="Descripcion del Ingreso"
+          label="Descripcion del Gasto"
           variant="standard"
           className="input"
           {...register('description', {
@@ -93,7 +91,7 @@ export default function FormIncome(): React.JSX.Element {
           select
           fullWidth
           variant="standard"
-          label="Tipo de ingreso"
+          label="Tipo de gasto"
           className="input"
           defaultValue=""
           inputProps={register('type', {
@@ -111,7 +109,7 @@ export default function FormIncome(): React.JSX.Element {
         </TextField>
 
         <TextField
-          label="Monto ingreso total en Bs."
+          label="Monto gasto total en Bs."
           className="input"
           type="number"
           variant="standard"
@@ -129,7 +127,7 @@ export default function FormIncome(): React.JSX.Element {
             rules={{ required: true }}
             render={({ field: { onChange, value } }) => (
               <DatePicker
-                label="Fecha de ingreso"
+                label="Fecha de gasto"
                 format="DD/MM/YYYY"
                 value={dayjs(value)}
                 onChange={onChange}
@@ -157,16 +155,12 @@ export default function FormIncome(): React.JSX.Element {
           isOpen={open}
           onClose={toggleModal}
           onRedirect={handleRedirect}
-          typeTransaction="Ingreso"
+          typeTransaction="Gasto"
           type={TypeModal.sucess}
           text="Registro Exitoso"
         />
       </form>
-      <SnackbarMessage
-        open={isOpen}
-        eventType={eventType}
-        onClose={handleClose}
-      />
+
     </div>
   )
 }

@@ -1,7 +1,9 @@
+import FormExpense from "./formExpense/FormExpense.component";
+
 export default function ExpensePage() {
     return (
         <div>
-            <h1>Expense Page</h1>
+            <FormExpense></FormExpense>
         </div>
     )
 }

@@ -1,7 +1,11 @@
+import { Typography } from "@mui/material";
+import HistoricalTable from "./_historicalTable/HistoricalTable";
+
 export default function HistoricalPage() {
     return (
         <div>
-            <h1>Historical Page</h1>
+            <Typography variant="h3">Historico</Typography>
+            <HistoricalTable />
         </div>
     )
 }

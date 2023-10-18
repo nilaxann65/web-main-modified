@@ -7,6 +7,20 @@ import { CardComponent } from './_components'
 import './page.css'
 
 export default function Home(): React.JSX.Element {
+  const pages = [{
+    title: 'Registro de ingresos',
+    icon: ingresosImage,
+    path: '/income'
+  }, {
+    title: 'Registro de gastos',
+    icon: gastosImage,
+    path: '/expense'
+  }, {
+    title: 'Historial',
+    icon: historicoImage,
+    path: '/historical'
+  }];
+
   return (
     <div className="content-page">
       <div className="title-description">
@@ -17,30 +31,16 @@ export default function Home(): React.JSX.Element {
         </p>
       </div>
       <div className="row">
-        <CardComponent
-          title="Registro de ingresos"
-          icon={ingresosImage}
-          onCardClick={() => {
-            console.log('here route of page')
-          }}
-          path={'/income'}
-        />
-        <CardComponent
-          title='Registro de gastos'
-          icon={gastosImage}
-          onCardClick={() => {
-            console.log('here route of page')
-          }}
-          path={'/expense'}
-        />
-        <CardComponent
-          title='Historial'
-          icon={historicoImage}
-          onCardClick={() => {
-            console.log('here route of page')
-          }}
-          path={'/historical'}
-        />
+        {pages.map((page, index) => (
+          <CardComponent
+            key={index}
+            title={page.title}
+            icon={page.icon}
+            onCardClick={() => console.log('here route of page')}
+            path={page.path}
+          />
+        ))
+        }
       </div>
     </div>
   )
