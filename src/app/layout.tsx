@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React from 'react'
-import { Navbar } from './components'
+import { Navbar } from './_components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Track Finance WEB'
 }
 
-export default function RootLayout ({
+export default function RootLayout({
   children
 }: {
   children: React.ReactNode

@@ -1,5 +1,5 @@
-import TypeModal from '@/app/common/enum/typeModal'
-import type ModalSuccessProps from '@/app/common/models/ModalSuccessProps'
+import TypeModal from '@/app/_common/enum/typeModal'
+import type ModalSuccessProps from '@/app/_common/models/ModalSuccessProps'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
@@ -9,7 +9,7 @@ import iconError from '../../../assets/icon/error.svg'
 import iconSuccess from '../../../assets/images/success.png'
 import './ModalSuccess.component.css'
 
-export default function ModalSuccess (
+export default function ModalSuccess(
   {
     isOpen,
     onClose,

@@ -10,15 +10,15 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 import transactionDescriptionType from '@/app/common/constants/TransactionDescriptionType.constant'
-import { ModalSuccess, OverlayLoader } from '@/app/components'
+import { ModalSuccess, OverlayLoader } from '@/app/_components'
 import { Controller, useForm, type SubmitHandler } from 'react-hook-form'
 
-import TypeModal from '@/app/common/enum/typeModal'
-import SnackbarMessage from '@/app/components/Snackbar/SnackbarMessage.components'
+import TypeModal from '@/app/_common/enum/typeModal'
+import SnackbarMessage from '@/app/_components/Snackbar/SnackbarMessage.components'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/navigation'
 
-export default function FormIncome (): React.JSX.Element {
+export default function FormIncome(): React.JSX.Element {
   const router = useRouter()
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
@@ -144,7 +144,7 @@ export default function FormIncome (): React.JSX.Element {
           {!(errors?.expenseDate == null) &&
             errors.expenseDate.type === 'required' && (
               <span className="error-msg">La fecha es requerida</span>
-          )}
+            )}
         </LocalizationProvider>
 
         <button type="submit" className="btn-secondary">

@@ -1,14 +1,15 @@
 import type { Income } from '../model/Income.class'
 
-export default async function SaveIncome (
+export default async function SaveIncome(
   formData: Income
 ): Promise<any> {
   try {
-    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}`
-    const response = await fetch(`${baseURL}/Incomes`, {
+    const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/financialHistory`
+    console.log('baseURL', baseURL)
+    const response = await fetch(`${baseURL}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData)
     })
