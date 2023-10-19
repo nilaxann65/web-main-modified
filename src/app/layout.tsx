@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React from 'react'
 import { Navbar } from './_components'
+import ReduxProvider from './_providers/redux.provider'
+import DataProvider from './_providers/data.provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,8 +20,13 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Navbar />
-        {children}
+        <ReduxProvider>
+          <DataProvider>
+            <Navbar />
+            {children}
+          </DataProvider>
+        </ReduxProvider>
+
       </body>
     </html>
   )

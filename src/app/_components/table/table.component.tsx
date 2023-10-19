@@ -76,9 +76,6 @@ export default function TableComponent({
                 <TableFooter>
                     <TableRow>
                         <TableCell>
-                            {`Paginas: ${table.getPageCount()}`}
-                        </TableCell>
-                        <TableCell>
                             <Button
                                 onClick={() => table.previousPage()}
                             >

@@ -1,9 +1,10 @@
 import './navbar.component.css'
 import React from 'react'
 import Image from 'next/image'
-import { Link } from '@mui/material'
+
 import { RoutesApp } from '@/app/_constants/routes'
 import logoWhite from '../../../assets/bsol-logo-transparent.png'
+import Link from 'next/link'
 
 const Navbar = (): JSX.Element => {
   return (
@@ -17,7 +18,9 @@ const Navbar = (): JSX.Element => {
             className="header-logo"
           />
           <div className="header-items">
-            <Link href={RoutesApp.HOME.path}>
+            <Link
+              href="/"
+            >
               {RoutesApp.HOME.name}
             </Link>
           </div>

@@ -1,6 +1,6 @@
 'use client'
 import { MenuItem, TextField } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './FormExpense.component.css'
 
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
@@ -17,7 +17,6 @@ import { useRouter } from 'next/navigation'
 import { Transaction } from '../../../_common/models/transaction.class'
 import SaveInvoice from '../../_services/SaveInvoice.service'
 import { InvoiceType } from '@/app/_common/enum/invoiceType'
-
 
 export default function FormExpense(): React.JSX.Element {
   const router = useRouter()
@@ -38,6 +37,8 @@ export default function FormExpense(): React.JSX.Element {
     }
   })
 
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [eventType, setTypeEvent] = React.useState('')
 
   const toggleModal = (): void => {
     setOpen(state => !state)
@@ -59,11 +60,15 @@ export default function FormExpense(): React.JSX.Element {
       error => {
         setLoading(false)
         //TODO: Implementar el provider de alertas
-        //setTypeEvent('error')
+        setTypeEvent('error')
         console.log('Error=>', error)
-        //setIsOpen(true)
+        setIsOpen(true)
       }
     )
+  }
+
+  const handleClose = (): void => {
+    setIsOpen(false)
   }
 
 
@@ -160,7 +165,11 @@ export default function FormExpense(): React.JSX.Element {
           text="Registro Exitoso"
         />
       </form>
-
+      <SnackbarMessage
+        open={isOpen}
+        eventType={eventType}
+        onClose={handleClose}
+      />
     </div>
   )
 }
